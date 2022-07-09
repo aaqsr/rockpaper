@@ -1,10 +1,8 @@
-h1 {
-    font-size: 2rem;
-}
 
 .button {
     font-size: 2em;
-    margin: 2rem;
+    margin: 1.5rem;
+    color: #131515;
     background-color: #FFD23F;
     border-style: dotted;
     border-radius: 2em;
@@ -22,4 +20,9 @@ h1 {
     flex-direction: row;
     flex-wrap: wrap;
     align-items: baseline;
+}
+
+.result {
+    margin: 0;
+    margin-top: 0.6em;
 }
