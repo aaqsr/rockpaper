@@ -23,6 +23,7 @@ body {
   color: #fff;
   font-size: 1.5em;
   padding-top: 100px;
+  overflow: auto;
 }
 
 .link {
