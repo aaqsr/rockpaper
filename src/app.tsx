@@ -9,7 +9,7 @@ const winningOptions = {
 
 const options = Object.keys(winningOptions);
 
-const useRand = () => (Math.round(Math.random()*1000)) % 3
+const useRand = () => (Math.round(Math.random()*1000)) % options.length
 
 const playRockPaper = (rand, opt, setResult) => {
   if (opt == winningOptions[options[rand]]) {
