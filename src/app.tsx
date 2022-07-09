@@ -4,17 +4,11 @@ export function App() {
   return (
   <>
     <div class="flexy">
-        <div class="col-container">
-            <button class='button'>🪨</button>
-        </div>
+        <button class='button'>🪨</button>
 
-        <div class="col-container">
-            <button class='button'>🗞</button>
-        </div>
+        <button class='button'>🗞</button>
 
-        <div class="col-container">
-            <button class='button'>✂️</button>
-        </div>
+        <button class='button'>✂️</button>
     </div>
 
     <h1 class="result">{result}</h1>

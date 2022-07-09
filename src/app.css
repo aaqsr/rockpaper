@@ -9,11 +9,6 @@
     padding: 0.5em;
 }
 
-.col-container {
-    display: flex;
-    flex-direction: column;
-}
-
 .flexy {
     display: flex;
     justify-content: center;
