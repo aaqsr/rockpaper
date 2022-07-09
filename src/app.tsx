@@ -11,11 +11,6 @@ const options = Object.keys(winningOptions);
 
 const useRand = () => (Math.round(Math.random()*1000)) % 3
 
-const rockPaper = () => {
-
-}
-
-
 const playRockPaper = (rand, opt, setResult) => {
   if (opt == winningOptions[options[rand]]) {
     setResult("You win!");
@@ -25,7 +20,6 @@ const playRockPaper = (rand, opt, setResult) => {
     setResult("You Lose :(");
   }
 }
-
 
 export function App() {
 
