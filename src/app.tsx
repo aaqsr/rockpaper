@@ -25,7 +25,7 @@ export function App() {
 
   const [humanAns, setHumanAns]: [string, Function] = useState("❓");
   const [computerAns, setComputerAns]: [string, Function] = useState("❓");
-  const [result, setResult]: [string, Function] = useState("CLICK TO BEGIN");
+  const [result, setResult]: [string, Function] = useState("PICK TO BEGIN");
 
   const buttonClickHandler = (opt: string) => {
     setHumanAns(opt);
