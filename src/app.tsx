@@ -1,7 +1,7 @@
 import './app.css'
-import { useEffect, useState } from 'preact/hooks';
+import { useState } from 'preact/hooks';
 
-const winningOptions = {
+const winningOptions: {[key: string]: string} = {
     '🪨':'🗞',
     '🗞': '✂️',
     '✂️': '🪨',
@@ -11,7 +11,7 @@ const options = Object.keys(winningOptions);
 
 const useRand = () => (Math.round(Math.random()*1000)) % options.length
 
-const playRockPaper = (rand, opt, setResult) => {
+const playRockPaper = (rand: number, opt: string, setResult: Function) => {
   if (opt == winningOptions[options[rand]]) {
     setResult("You win!");
   } else if (opt == options[rand]) {
