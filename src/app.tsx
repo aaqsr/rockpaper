@@ -1,28 +1,40 @@
 import './app.css'
 import { useState } from 'preact/hooks';
 
-const winningOptions: {[key: string]: string[]} = {
+const vanilla: {[key: string]: string[]} = {
     '🪨':['🗞'],
     '🗞': ['✂️'],
     '✂️': ['🪨'],
 }
 
+export const App = () => (
+  <Game winningOptions={vanilla} />
+)
+
 const useRand = (options: string[]) => (Math.round(Math.random()*1000)) % options.length
 
-const playRockPaper = (rand: number, optionSelected: string, options: string[], setResult: Function) => {
+const playGame = (
+  rand: number,
+  optionSelected: string, options: string[],
+  winningOptions: { [key: string]: string[] },
+): string => {
   const winConditions = winningOptions[options[rand]];
   console.log(winConditions);
   if (winConditions.includes(optionSelected)) {
-    setResult("You win!");
+    return "You win!";
   } else if (optionSelected == options[rand]) {
-    setResult("TIE");
+    return "TIE";
   } else {
-    setResult("You Lose :(");
+    return "You Lose :(";
   }
 }
 
-export function App() {
+interface gameProps {
+  winningOptions: {[key: string]: string[]}
+}
 
+export const Game = (props: gameProps) => {
+  const winningOptions = props.winningOptions;
   const options = Object.keys(winningOptions);
 
   const [humanAns, setHumanAns]: [string, Function] = useState("❓");
@@ -35,7 +47,7 @@ export function App() {
     const rand = useRand(options);
     setComputerAns(options[rand]);
 
-    playRockPaper(rand, optionSelected, options, setResult)
+    setResult(playGame(rand, optionSelected, options, winningOptions));
   }
 
 
