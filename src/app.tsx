@@ -7,8 +7,16 @@ const vanilla: {[key: string]: string[]} = {
     '✂️': ['🪨'],
 }
 
+const bigBangTheory: { [key: string]: string[] } = {
+    '🪨':['🗞', '🖖'],
+    '🗞': ['✂️', '🦎'],
+    '✂️': ['🪨', '🖖'],
+    '🦎': ['🪨', '✂️'],
+    '🖖': ['🗞', '🦎']
+}
+
 export const App = () => (
-  <Game winningOptions={vanilla} />
+  <Game winningOptions={bigBangTheory} />
 )
 
 const useRand = (options: string[]) => (Math.round(Math.random()*1000)) % options.length
