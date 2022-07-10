@@ -1,20 +1,20 @@
 import './app.css'
 import { useState } from 'preact/hooks';
 
-const winningOptions: {[key: string]: string} = {
-    '🪨':'🗞',
-    '🗞': '✂️',
-    '✂️': '🪨',
+const winningOptions: {[key: string]: string[]} = {
+    '🪨':['🗞'],
+    '🗞': ['✂️'],
+    '✂️': ['🪨'],
 }
 
-const options = Object.keys(winningOptions);
+const useRand = (options: string[]) => (Math.round(Math.random()*1000)) % options.length
 
-const useRand = () => (Math.round(Math.random()*1000)) % options.length
-
-const playRockPaper = (rand: number, opt: string, setResult: Function) => {
-  if (opt == winningOptions[options[rand]]) {
+const playRockPaper = (rand: number, optionSelected: string, options: string[], setResult: Function) => {
+  const winConditions = winningOptions[options[rand]];
+  console.log(winConditions);
+  if (winConditions.includes(optionSelected)) {
     setResult("You win!");
-  } else if (opt == options[rand]) {
+  } else if (optionSelected == options[rand]) {
     setResult("TIE");
   } else {
     setResult("You Lose :(");
@@ -23,17 +23,19 @@ const playRockPaper = (rand: number, opt: string, setResult: Function) => {
 
 export function App() {
 
+  const options = Object.keys(winningOptions);
+
   const [humanAns, setHumanAns]: [string, Function] = useState("❓");
   const [computerAns, setComputerAns]: [string, Function] = useState("❓");
   const [result, setResult]: [string, Function] = useState("PICK TO BEGIN");
 
-  const buttonClickHandler = (opt: string) => {
-    setHumanAns(opt);
+  const buttonClickHandler = (optionSelected: string) => {
+    setHumanAns(optionSelected);
 
-    const rand = useRand();
+    const rand = useRand(options);
     setComputerAns(options[rand]);
 
-    playRockPaper(rand, opt, setResult)
+    playRockPaper(rand, optionSelected, options, setResult)
   }
 
 
